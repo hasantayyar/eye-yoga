@@ -40,3 +40,15 @@ npm run build       # production build into dist/
 ```
 
 `check:data` is worth running after touching anything in `src/data` or `src/i18n`. It verifies that every exercise has copy in both languages with matching step counts, that routines only reference known exercises within their round limits, and that all movement paths stay inside the stage.
+
+## Screenshots
+
+![Home](screenshots/s1.png)
+
+![Home with quick start](screenshots/s2.png)
+
+![Guided routines](screenshots/s3.png)
+
+![Exercise detail](screenshots/s4.png)
+
+![Active session](screenshots/s5.png)
