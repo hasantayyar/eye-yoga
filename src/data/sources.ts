@@ -27,13 +27,13 @@ const BREAKS_HELP: SourceEntry = {
 const BREAKS_DOUBT: SourceEntry = {
   url: 'https://doi.org/10.1097/opx.0000000000001971',
   en: 'Optom Vis Sci - 20-second breaks alone did not reduce strain in a controlled task (Johnson & Rosenfield, 2023)',
-  tr: 'Optom Vis Sci - Kontrollü bir görevde yalnız 20 saniyelik molalar zorlanmayı azaltmadı (Johnson ve Rosenfield, 2023)',
+  tr: 'Optom Vis Sci - Kontrollü bir görevde tek başına 20 saniyelik molalar zorlanmayı azaltmadı (Johnson ve Rosenfield, 2023)',
 }
 
 const CITT: SourceEntry = {
   url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC2779032/',
   en: 'Arch Ophthalmol - Convergence Insufficiency Treatment Trial: home push-ups helped 43% of children, supervised therapy 73% (CITT, 2008)',
-  tr: 'Arch Ophthalmol - Konverjans Yetersizliği Tedavi Çalışması: evde itme egzersizi çocukların %43\u2019üne, gözetimli terapi %73\u2019üne yardım etti (CITT, 2008)',
+  tr: 'Arch Ophthalmol - Konverjans Yetersizliği Tedavi Çalışması: evde yapılan itme egzersizi çocukların %43\u2019üne, gözetimli terapi %73\u2019üne yardım etti (CITT, 2008)',
 }
 
 const AAO_MYTHS: SourceEntry = {
