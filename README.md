@@ -43,8 +43,6 @@ npm run build       # production build into dist/
 
 ## Screenshots
 
-![Home](screenshots/s1.png)
-
 ![Home with quick start](screenshots/s2.png)
 
 ![Guided routines](screenshots/s3.png)
