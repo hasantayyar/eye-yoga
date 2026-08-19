@@ -72,7 +72,7 @@ export function Home({
           <p>{t.audioGuideBody}</p>
         </div>
         <audio key={locale} controls preload="metadata">
-          <source src={`/audio/screen-reset-${locale}.mp3`} type="audio/mpeg" />
+          <source src={`audio/screen-reset-${locale}.mp3`} type="audio/mpeg" />
           {t.audioUnsupported}
         </audio>
       </section>
