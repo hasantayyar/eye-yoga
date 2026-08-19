@@ -1232,8 +1232,6 @@ a:hover {
 
 .stage-ring {
   stroke: color-mix(in srgb, var(--glow) 70%, transparent);
-  transform: rotate(-90deg);
-  transform-origin: center;
 }
 
 .stage-guide {

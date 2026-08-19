@@ -38,6 +38,7 @@ export function Stage({ segment, progress, reducedMotion }: StageProps) {
         r={RING_RADIUS}
         strokeDasharray={RING_CIRCUMFERENCE}
         strokeDashoffset={ringOffset}
+        transform="rotate(-90 0 0)"
       />
 
       {kind === 'blink' || kind === 'squeeze' ? (
