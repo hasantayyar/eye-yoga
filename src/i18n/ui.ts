@@ -125,7 +125,7 @@ export const ui: Record<'en' | 'tr', Ui> = {
     langAria: 'Language',
 
     heroEyebrow: 'Guided eye exercise',
-    heroTitle: 'Your eyes have held one focus all day.',
+    heroTitle: 'Your eyes have been fixed at one distance all day.',
     heroLede:
       'Follow a moving dot through short, guided routines. Every exercise says what it does, how long it takes, and how good the evidence actually is. Nothing to read first. Press start and the app talks you through it.',
     quickStart: 'Start the 1-minute reset',
@@ -342,7 +342,7 @@ export const ui: Record<'en' | 'tr', Ui> = {
     langAria: 'Dil',
 
     heroEyebrow: 'Rehberli göz egzersizi',
-    heroTitle: 'Gözlerin bütün gün aynı yere odaklandı.',
+    heroTitle: 'Gözlerin bütün gün aynı mesafede kaldı.',
     heroLede:
       'Kısa ve rehberli rutinlerde hareket eden bir noktayı takip ediyorsun. Her egzersiz ne işe yaradığını, ne kadar sürdüğünü ve arkasındaki kanıtın gerçekte ne kadar güçlü olduğunu anlatıyor. Baştan bir şey okumana gerek yok: başlat, gerisini uygulama söyler.',
     quickStart: '1 dakikalık sıfırlamayı başlat',
