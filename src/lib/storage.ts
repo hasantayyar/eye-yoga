@@ -1,5 +1,4 @@
 const SOUND_KEY = 'eyy:sound'
-const REMINDER_KEY = 'eyy:reminder'
 const STATS_KEY = 'eyy:stats'
 const SEEN_KEY = 'eyy:seen'
 
@@ -75,14 +74,6 @@ export function readSound(): boolean {
 
 export function writeSound(value: boolean): void {
   localStorage.setItem(SOUND_KEY, String(value))
-}
-
-export function readReminder(): boolean {
-  return localStorage.getItem(REMINDER_KEY) === 'true'
-}
-
-export function writeReminder(value: boolean): void {
-  localStorage.setItem(REMINDER_KEY, String(value))
 }
 
 export function readSeen(): boolean {

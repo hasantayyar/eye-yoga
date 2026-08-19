@@ -13,6 +13,10 @@ export type Ui = {
   quickStart: string
   browse: string
 
+  audioGuideTitle: string
+  audioGuideBody: string
+  audioUnsupported: string
+
   howAria: string
   how: { title: string; text: string }[]
 
@@ -43,17 +47,6 @@ export type Ui = {
   sessionsTotal: (count: number) => string
   minutesTotal: (minutes: number) => string
   todayDone: string
-
-  reminderTitle: string
-  reminderBody: string
-  reminderOn: string
-  reminderOff: string
-  reminderEvery: (minutes: number) => string
-  reminderNudgeTitle: string
-  reminderNudgeBody: string
-  reminderStart: string
-  reminderLater: string
-  reminderNext: (clock: string) => string
 
   back: string
   begin: string
@@ -128,6 +121,10 @@ export const ui: Record<'en' | 'tr', Ui> = {
     heroLede: 'Short, guided eye-exercise routines.',
     quickStart: 'Start the 1-minute reset',
     browse: 'Or pick a longer routine',
+
+    audioGuideTitle: 'The complete screen reset',
+    audioGuideBody: 'A single guided audio for tired eyes after a long stretch of screen time.',
+    audioUnsupported: 'Your browser does not support audio playback.',
 
     howAria: 'How it works',
     how: [
@@ -208,18 +205,6 @@ export const ui: Record<'en' | 'tr', Ui> = {
     sessionsTotal: (count) => (count === 1 ? '1 session' : `${count} sessions`),
     minutesTotal: (minutes) => `${minutes} min of practice`,
     todayDone: 'Done today',
-
-    reminderTitle: 'Nudge me every 20 minutes',
-    reminderBody:
-      'While this tab stays open, a quiet banner appears when it is time to look away. It is the one habit eye-care bodies agree on.',
-    reminderOn: 'On',
-    reminderOff: 'Off',
-    reminderEvery: (minutes) => `Every ${minutes} min`,
-    reminderNudgeTitle: 'Time to look away',
-    reminderNudgeBody: 'Twenty seconds on something far. That is the whole ask.',
-    reminderStart: 'Take the break',
-    reminderLater: 'Not now',
-    reminderNext: (clock) => `Next nudge in ${clock}`,
 
     back: 'All routines',
     begin: 'Begin',
@@ -344,6 +329,10 @@ export const ui: Record<'en' | 'tr', Ui> = {
     quickStart: '1 dakikalık sıfırlamayı başlat',
     browse: 'Ya da daha uzun bir rutin seç',
 
+    audioGuideTitle: 'Eksiksiz ekran molası',
+    audioGuideBody: 'Uzun süre ekrana baktıktan sonra yorgun gözler için tek bir rehberli ses kaydı.',
+    audioUnsupported: 'Tarayıcın ses oynatmayı desteklemiyor.',
+
     howAria: 'Nasıl çalışır',
     how: [
       {
@@ -423,18 +412,6 @@ export const ui: Record<'en' | 'tr', Ui> = {
     sessionsTotal: (count) => `${count} seans`,
     minutesTotal: (minutes) => `${minutes} dk pratik`,
     todayDone: 'Bugün yapıldı',
-
-    reminderTitle: '20 dakikada bir hatırlat',
-    reminderBody:
-      'Bu sekme açık kaldığı sürece, uzağa bakma vakti geldiğinde sessiz bir uyarı çıkar. Göz sağlığı kuruluşlarının üzerinde anlaştığı tek alışkanlık bu.',
-    reminderOn: 'Açık',
-    reminderOff: 'Kapalı',
-    reminderEvery: (minutes) => `${minutes} dakikada bir`,
-    reminderNudgeTitle: 'Uzağa bakma vakti',
-    reminderNudgeBody: 'Uzaktaki bir şeye yirmi saniye bak. Hepsi bu.',
-    reminderStart: 'Molayı ver',
-    reminderLater: 'Şimdi değil',
-    reminderNext: (clock) => `Sonraki hatırlatmaya ${clock}`,
 
     back: 'Tüm rutinler',
     begin: 'Başla',

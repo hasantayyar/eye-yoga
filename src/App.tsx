@@ -3,27 +3,16 @@ import { completeHaptic, playCompleteCue, resumeAudio } from './audio/cues'
 import { Complete } from './components/Complete'
 import { ExerciseDetail } from './components/ExerciseDetail'
 import { Home } from './components/Home'
-import { ReminderBanner } from './components/ReminderBanner'
 import { RoutineDetail } from './components/RoutineDetail'
 import { Session } from './components/Session'
 import { getExerciseBase } from './data/exercises'
-import { useReminder } from './hooks/useReminder'
 import { useI18n } from './i18n/context'
 import { buildPlan, type Plan } from './lib/plan'
 import { hrefFor, navigate, parseRoute, type Route } from './lib/route'
-import {
-  readReminder,
-  readSound,
-  readStats,
-  recordSession,
-  writeReminder,
-  writeSound,
-  type Stats,
-} from './lib/storage'
+import { readSound, readStats, recordSession, writeSound, type Stats } from './lib/storage'
 import type { GoalKey } from './types'
 
 const QUICK_ROUTINE = 'desk'
-const REMINDER_EXERCISE = 'twenty'
 
 type Screen =
   | { name: 'home' }
@@ -63,13 +52,9 @@ export default function App() {
     return 3
   })
   const [sound, setSound] = useState(readSound)
-  const [reminderOn, setReminderOn] = useState(readReminder)
   const [stats, setStats] = useState<Stats>(readStats)
   const completing = useRef(false)
   const wentBack = useRef(false)
-
-  const inSession = screen.name === 'session'
-  const reminder = useReminder(reminderOn && !inSession)
 
   const screenKey =
     screen.name === 'home' ? 'home' : `${screen.name}:${'id' in screen ? screen.id : ''}`
@@ -128,11 +113,6 @@ export default function App() {
   const persistSound = (value: boolean) => {
     setSound(value)
     writeSound(value)
-  }
-
-  const persistReminder = (value: boolean) => {
-    setReminderOn(value)
-    writeReminder(value)
   }
 
   const goHome = () => {
@@ -220,32 +200,19 @@ export default function App() {
     )
   }
 
-  const nudge = reminder.due ? (
-    <ReminderBanner
-      onStart={() => {
-        reminder.snooze()
-        startExercise(REMINDER_EXERCISE, 1)
-      }}
-      onDismiss={reminder.snooze}
-    />
-  ) : null
-
   if (screen.name === 'complete') {
     return (
-      <>
-        <Complete
-          name={screen.title}
-          stats={stats}
-          tipIndex={stats.sessions}
-          onAgain={() =>
-            screen.kind === 'routine'
-              ? startRoutine(screen.id)
-              : startExercise(screen.id, screen.rounds)
-          }
-          onHome={goHome}
-        />
-        {nudge}
-      </>
+      <Complete
+        name={screen.title}
+        stats={stats}
+        tipIndex={stats.sessions}
+        onAgain={() =>
+          screen.kind === 'routine'
+            ? startRoutine(screen.id)
+            : startExercise(screen.id, screen.rounds)
+        }
+        onHome={goHome}
+      />
     )
   }
 
@@ -253,17 +220,14 @@ export default function App() {
     const routine = getRoutine(screen.id)
     if (routine) {
       return (
-        <>
-          <RoutineDetail
-            routine={routine}
-            sound={sound}
-            onSound={persistSound}
-            onBack={goHome}
-            onBegin={() => startRoutine(routine.id)}
-            onOpenExercise={openExercise}
-          />
-          {nudge}
-        </>
+        <RoutineDetail
+          routine={routine}
+          sound={sound}
+          onSound={persistSound}
+          onBack={goHome}
+          onBegin={() => startRoutine(routine.id)}
+          onOpenExercise={openExercise}
+        />
       )
     }
   }
@@ -272,37 +236,28 @@ export default function App() {
     const exercise = getExercise(screen.id)
     if (exercise) {
       return (
-        <>
-          <ExerciseDetail
-            exercise={exercise}
-            rounds={Math.min(rounds, exercise.maxRounds)}
-            sound={sound}
-            onRounds={setRounds}
-            onSound={persistSound}
-            onBack={goHome}
-            onBegin={() => startExercise(exercise.id, Math.min(rounds, exercise.maxRounds))}
-            onOpenRoutine={openRoutine}
-          />
-          {nudge}
-        </>
+        <ExerciseDetail
+          exercise={exercise}
+          rounds={Math.min(rounds, exercise.maxRounds)}
+          sound={sound}
+          onRounds={setRounds}
+          onSound={persistSound}
+          onBack={goHome}
+          onBegin={() => startExercise(exercise.id, Math.min(rounds, exercise.maxRounds))}
+          onOpenRoutine={openRoutine}
+        />
       )
     }
   }
 
   return (
-    <>
-      <Home
-        goal={goal}
-        onGoal={setGoal}
-        stats={stats}
-        reminder={reminderOn}
-        onReminder={persistReminder}
-        reminderSecondsLeft={reminder.secondsLeft}
-        onQuickStart={() => startRoutine(QUICK_ROUTINE)}
-        onOpenRoutine={openRoutine}
-        onOpenExercise={openExercise}
-      />
-      {nudge}
-    </>
+    <Home
+      goal={goal}
+      onGoal={setGoal}
+      stats={stats}
+      onQuickStart={() => startRoutine(QUICK_ROUTINE)}
+      onOpenRoutine={openRoutine}
+      onOpenExercise={openExercise}
+    />
   )
 }

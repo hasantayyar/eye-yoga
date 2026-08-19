@@ -1,6 +1,6 @@
 import { goalOrder } from '../data/exercises'
 import { useI18n } from '../i18n/context'
-import { formatClock, formatMinutes } from '../lib/time'
+import { formatMinutes } from '../lib/time'
 import type { Exercise, GoalKey, Routine } from '../types'
 import { EvidenceBadge } from './EvidenceBadge'
 import { LanguageSwitch } from './LanguageSwitch'
@@ -12,9 +12,6 @@ type HomeProps = {
   goal: GoalKey
   onGoal: (goal: GoalKey) => void
   stats: Stats
-  reminder: boolean
-  onReminder: (value: boolean) => void
-  reminderSecondsLeft: number
   onQuickStart: () => void
   onOpenRoutine: (id: string) => void
   onOpenExercise: (id: string) => void
@@ -24,14 +21,11 @@ export function Home({
   goal,
   onGoal,
   stats,
-  reminder,
-  onReminder,
-  reminderSecondsLeft,
   onQuickStart,
   onOpenRoutine,
   onOpenExercise,
 }: HomeProps) {
-  const { t, routines, exercises, sources } = useI18n()
+  const { locale, t, routines, exercises, sources } = useI18n()
 
   const shownRoutines = goal === 'all' ? routines : routines.filter((r) => r.goals.includes(goal))
   const shownExercises =
@@ -71,6 +65,18 @@ export function Home({
         ) : null}
       </section>
 
+      <section className="panel audio-guide">
+        <div>
+          <p className="eyebrow">{t.heroEyebrow}</p>
+          <h2>{t.audioGuideTitle}</h2>
+          <p>{t.audioGuideBody}</p>
+        </div>
+        <audio key={locale} controls preload="metadata">
+          <source src={`/audio/screen-reset-${locale}.mp3`} type="audio/mpeg" />
+          {t.audioUnsupported}
+        </audio>
+      </section>
+
       <section className="how" aria-label={t.howAria}>
         {t.how.map((step, index) => (
           <div className="how-step" key={step.title}>
@@ -81,29 +87,6 @@ export function Home({
             </div>
           </div>
         ))}
-      </section>
-
-      <section className="panel reminder-card">
-        <div className="reminder-head">
-          <div>
-            <h2>{t.reminderTitle}</h2>
-            <p>{t.reminderBody}</p>
-          </div>
-          <label className="switch">
-            <input
-              type="checkbox"
-              checked={reminder}
-              onChange={(event) => onReminder(event.target.checked)}
-            />
-            <span className="switch-track" aria-hidden="true">
-              <span className="switch-knob" />
-            </span>
-            <span className="switch-text">{reminder ? t.reminderOn : t.reminderOff}</span>
-          </label>
-        </div>
-        {reminder ? (
-          <p className="reminder-next">{t.reminderNext(formatClock(reminderSecondsLeft))}</p>
-        ) : null}
       </section>
 
       <section className="goal-block">

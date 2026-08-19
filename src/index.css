@@ -216,8 +216,7 @@ a:hover {
   max-width: 26rem;
 }
 
-.hero-hint,
-.reminder-next {
+.hero-hint {
   margin-top: 0.6rem;
   color: var(--ink-soft);
   font-size: 0.88rem;
@@ -579,6 +578,27 @@ a:hover {
   margin-bottom: 0.55rem;
 }
 
+.audio-guide {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem);
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.audio-guide .eyebrow {
+  margin-bottom: 0.35rem;
+}
+
+.audio-guide audio {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .audio-guide {
+    grid-template-columns: 1fr;
+  }
+}
+
 .panel-warn {
   border-color: color-mix(in srgb, var(--rose) 30%, var(--line));
   background: color-mix(in srgb, var(--rose) 5%, var(--paper));
@@ -638,67 +658,7 @@ a:hover {
   font-size: 0.88rem;
 }
 
-/* ---------- reminder card + switch ---------- */
-
-.reminder-head {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  cursor: pointer;
-  flex: 0 0 auto;
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--ink-soft);
-}
-
-.switch input {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.switch-track {
-  width: 2.9rem;
-  height: 1.7rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--ink-soft) 22%, transparent);
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  padding: 0.16rem;
-  transition: background 180ms ease;
-}
-
-.switch-knob {
-  width: 1.28rem;
-  height: 1.28rem;
-  border-radius: 999px;
-  background: var(--paper);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 180ms ease;
-}
-
-.switch input:checked + .switch-track {
-  background: var(--teal-deep);
-}
-
-.switch input:checked + .switch-track .switch-knob {
-  transform: translateX(1.16rem);
-}
-
-.switch input:focus-visible + .switch-track {
-  outline: 2px solid var(--teal);
-  outline-offset: 2px;
-}
+/* ---------- checkboxes ---------- */
 
 .check {
   display: flex;
@@ -974,67 +934,6 @@ a:hover {
   gap: 0.7rem;
   margin-top: 1.6rem;
   max-width: 26rem;
-}
-
-/* ---------- nudge ---------- */
-
-.nudge {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: calc(1rem + env(safe-area-inset-bottom));
-  z-index: 20;
-  width: min(30rem, calc(100% - 1.6rem));
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  background: var(--night);
-  color: var(--night-ink);
-  border: 1px solid var(--night-line);
-  border-radius: 18px;
-  padding: 0.9rem 1rem;
-  box-shadow: 0 20px 44px rgba(8, 19, 26, 0.3);
-}
-
-.nudge-title {
-  font-weight: 700;
-}
-
-.nudge-body {
-  color: var(--night-soft);
-  font-size: 0.86rem;
-}
-
-.nudge-actions {
-  display: flex;
-  gap: 0.4rem;
-  align-items: center;
-}
-
-.nudge-primary,
-.nudge-ghost {
-  border-radius: 999px;
-  border: 1px solid transparent;
-  padding: 0.5rem 0.9rem;
-  font-size: 0.86rem;
-  font-weight: 700;
-}
-
-.nudge-primary {
-  background: var(--glow);
-  color: #08131a;
-}
-
-.nudge-ghost {
-  background: none;
-  border-color: var(--night-line);
-  color: var(--night-soft);
-}
-
-.nudge-ghost:hover {
-  color: var(--night-ink);
 }
 
 /* ---------- session ---------- */
@@ -1449,8 +1348,6 @@ a:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .switch-knob,
-  .switch-track,
   .session-progress span {
     transition: none;
   }
@@ -1488,13 +1385,5 @@ a:hover {
     background: #a8dcd1;
     color: #0f1b1c;
     border-color: #a8dcd1;
-  }
-
-  .switch input:checked + .switch-track {
-    background: #a8dcd1;
-  }
-
-  .switch-knob {
-    background: #0f1b1c;
   }
 }
