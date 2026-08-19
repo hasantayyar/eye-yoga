@@ -61,7 +61,6 @@ export function Home({
           <button type="button" className="primary-btn" onClick={onQuickStart}>
             {t.quickStart}
           </button>
-          <p className="hero-hint">{t.quickStartHint}</p>
         </div>
 
         {doneToday(stats) ? (

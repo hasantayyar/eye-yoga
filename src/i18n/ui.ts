@@ -11,7 +11,6 @@ export type Ui = {
   heroTitle: string
   heroLede: string
   quickStart: string
-  quickStartHint: string
   browse: string
 
   howAria: string
@@ -126,10 +125,8 @@ export const ui: Record<'en' | 'tr', Ui> = {
 
     heroEyebrow: 'Guided eye exercise',
     heroTitle: 'Your eyes have been fixed at one distance all day.',
-    heroLede:
-      'Follow a moving dot through short, guided routines. Every exercise says what it does, how long it takes, and how good the evidence actually is. Nothing to read first. Press start and the app talks you through it.',
+    heroLede: 'Short, guided eye-exercise routines.',
     quickStart: 'Start the 1-minute reset',
-    quickStartHint: 'No setup. Works on a phone or a desk screen.',
     browse: 'Or pick a longer routine',
 
     howAria: 'How it works',
@@ -343,10 +340,8 @@ export const ui: Record<'en' | 'tr', Ui> = {
 
     heroEyebrow: 'Rehberli göz egzersizi',
     heroTitle: 'Gözlerin bütün gün aynı mesafede kaldı.',
-    heroLede:
-      'Kısa ve rehberli rutinlerde hareket eden bir noktayı takip ediyorsun. Her egzersiz ne işe yaradığını, ne kadar sürdüğünü ve arkasındaki kanıtın gerçekte ne kadar güçlü olduğunu anlatıyor. Baştan bir şey okumana gerek yok: başlat, gerisini uygulama söyler.',
+    heroLede: 'Kısa ve rehberli rutinlerde göz egzersizleri.',
     quickStart: '1 dakikalık sıfırlamayı başlat',
-    quickStartHint: 'Hazırlık yok. Telefonda da masaüstünde de çalışır.',
     browse: 'Ya da daha uzun bir rutin seç',
 
     howAria: 'Nasıl çalışır',
