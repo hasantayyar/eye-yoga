@@ -13,7 +13,7 @@ Not medical advice. Stop if you feel dizzy, nauseous, or any eye pain, and see a
 - A moving target dot on a dark stage with faint guide paths, so following along needs no interpretation
 - Distinct visuals per exercise type: smooth pursuit, jump-and-land saccades, blink prompts with animated lids, near-far depth rings, palming, and steady-gaze trataka
 - Evidence badge on every exercise (trial, clinical, mixed, or traditional) with the study behind it linked
-- 20-20-20 reminder that nudges you every 20 minutes, with a one-tap start
+- 20-20-20 reminder that nudges you every 20 minutes via notification, with a one-tap start
 - Streak, session count, and total minutes to keep the habit going
 - Soft tones per step kind, a rising triad at the end, and light haptics where supported
 - Optional 20-20-20 reminder, sound toggle, and reduced-motion support
